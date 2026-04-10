@@ -2,15 +2,15 @@ import { readFileSync, writeFileSync } from 'node:fs'
 
 const WATERMARK_FILE = '.watermark.json'
 
-export async function getWatermark(): Promise<number> {
+export async function getWatermark(): Promise<bigint> {
   try {
     const data = JSON.parse(readFileSync(WATERMARK_FILE, 'utf-8'))
-    return data.watermark ?? 0
+    return BigInt(data.watermark ?? 0)
   } catch {
-    return 0
+    return 0n
   }
 }
 
-export async function setWatermark(watermark: number): Promise<void> {
-  writeFileSync(WATERMARK_FILE, JSON.stringify({ watermark }, null, 2))
+export async function setWatermark(watermark: bigint): Promise<void> {
+  writeFileSync(WATERMARK_FILE, JSON.stringify({ watermark: Number(watermark) }, null, 2))
 }

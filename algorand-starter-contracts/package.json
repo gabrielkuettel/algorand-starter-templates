@@ -13,9 +13,9 @@
     "test": "npm run build && vitest run",
     "test:watch": "vitest watch",
     "check-types": "tsc --noEmit",
-    "deploy": "tsx --env-file=.env.localnet deploy.ts",
-    "deploy:testnet": "tsx --env-file=.env.testnet deploy.ts",
-    "deploy:mainnet": "tsx --env-file=.env.mainnet deploy.ts"
+    "deploy": "npm run build && tsx --env-file=.env.localnet deploy.ts",
+    "deploy:testnet": "npm run build && tsx --env-file=.env.testnet deploy.ts",
+    "deploy:mainnet": "npm run build && tsx --env-file=.env.mainnet deploy.ts"
   },
   "dependencies": {
     "@algorandfoundation/algorand-typescript": "^1.0.1"

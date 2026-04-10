@@ -7,6 +7,11 @@ const algorand = AlgorandClient.fromConfig({
     port: process.env.ALGOD_PORT ?? '4001',
     token: process.env.ALGOD_TOKEN ?? '',
   },
+  indexerConfig: {
+    server: process.env.INDEXER_SERVER ?? 'http://localhost',
+    port: process.env.INDEXER_PORT ?? '8980',
+    token: process.env.INDEXER_TOKEN ?? '',
+  },
 })
 
 // On localnet, use the default dispenser account.

@@ -101,3 +101,7 @@ The `[ALERT]` events for UpdateApplication and DeleteApplication are the primary
 | `npm run dev` | Build contracts + start Vite dev server |
 | `npm run dev:subscriber` | Start the event subscriber in watch mode |
 | `npm test` | Run contract tests (unit + e2e) |
+
+## CI
+
+The CI workflow (`.github/workflows/ci.yaml`) runs on pull requests and does three things: test contracts against LocalNet, type-check all workspaces, and build the frontend. This is deliberately minimal compared to the `algokit init` output, which ships 6 workflow files including reusable CD pipelines for testnet deployment and Vercel, environment-gated secrets, dependency auditing, and TEAL scanning. Most of that is deployment infrastructure you don't have wired up on day one. Add CD workflows when you've actually provisioned the secrets and environments they need.
