@@ -1,0 +1,38 @@
+name: Release
+
+on:
+  push:
+    branches:
+      - main
+    paths-ignore:
+      - 'docs/**'
+      - '**.md'
+      - '.vscode/**'
+      - '.idea/**'
+
+permissions:
+  contents: read
+  packages: read
+
+jobs:
+  hello-world-contracts-validate:
+    name: Run hello-world-contracts release
+    secrets: inherit
+    uses: ./.github/workflows/hello-world-contracts-ci.yaml
+
+  hello-world-contracts-release:
+    name: Run hello-world-contracts release
+    secrets: inherit
+    uses: ./.github/workflows/hello-world-contracts-cd.yaml
+    needs: hello-world-contracts-validate
+
+  hello-world-frontend-validate:
+    name: Run hello-world-frontend release
+    secrets: inherit
+    uses: ./.github/workflows/hello-world-frontend-ci.yaml
+
+  hello-world-frontend-release:
+    name: Run hello-world-frontend release
+    secrets: inherit
+    uses: ./.github/workflows/hello-world-frontend-cd.yaml
+    needs: hello-world-frontend-validate
