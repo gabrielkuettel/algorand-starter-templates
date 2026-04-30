@@ -2,6 +2,9 @@
   "name": "algorand-starter-fullstack",
   "private": true,
   "workspaces": ["contracts", "app"],
+  "engines": {
+    "node": ">=24.0"
+  },
   "scripts": {
     "build": "npm -w @repo/contracts run build",
     "dev": "npm run build && npm -w @repo/app run dev",

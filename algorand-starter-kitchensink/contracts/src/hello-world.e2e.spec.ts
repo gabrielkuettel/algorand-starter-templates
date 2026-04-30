@@ -1,4 +1,5 @@
 import { algorandFixture } from '@algorandfoundation/algokit-utils/testing'
+import type { ReadableAddress } from '@algorandfoundation/algokit-utils/common'
 import { beforeEach, describe, expect, test } from 'vitest'
 import { HelloWorldFactory } from '../artifacts/HelloWorldClient'
 
@@ -6,7 +7,7 @@ describe('HelloWorld contract (e2e)', () => {
   const localnet = algorandFixture()
   beforeEach(localnet.newScope)
 
-  const deploy = async (account: string) => {
+  const deploy = async (account: ReadableAddress) => {
     const factory = localnet.algorand.client.getTypedAppFactory(HelloWorldFactory, {
       defaultSender: account,
     })

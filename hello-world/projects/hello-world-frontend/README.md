@@ -12,7 +12,7 @@ Start by cloning this repository to your local machine.
 #### 2. Install Pre-requisites
 Ensure the following pre-requisites are installed and properly configured:
 
-- **npm**: Node package manager. Install from [Node.js Installation Guide](https://nodejs.org/en/download/). Verify with `npm -v` to see version `18.12`+.
+- **Node.js 24+ / npm**: Install Node.js 24 or later from [Node.js Installation Guide](https://nodejs.org/en/download/). Verify with `node -v` to see version `24`+.
 - **AlgoKit CLI**: Essential for project setup and operations. Install the latest version from [AlgoKit CLI Installation Guide](https://github.com/algorandfoundation/algokit-cli#install). Verify installation with `algokit --version`, expecting `2.0.0` or later.
 
 #### 3. Bootstrap Your Local Environment

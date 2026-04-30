@@ -4,7 +4,7 @@ A full-stack Algorand dApp with smart contracts, React frontend, and an event su
 
 ## Prerequisites
 
-- [Node.js](https://nodejs.org/) >= 22.0
+- [Node.js](https://nodejs.org/) >= 24.0
 - [AlgoKit CLI](https://github.com/algorandfoundation/algokit-cli) (`pipx install algokit`)
 - [Docker](https://www.docker.com/) (for running LocalNet)
 

@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import {
+  type SupportedWallet,
   WalletId,
   WalletManager,
   WalletProvider,
@@ -9,7 +10,7 @@ import {
   WalletButton,
   type Theme,
 } from '@txnlab/use-wallet-ui-react'
-import { getNetwork } from './utils/algorand'
+import { getKmdConfigFromViteEnvironment, getNetwork } from './utils/algorand'
 import AppCalls from './components/AppCalls'
 
 const network = getNetwork()
@@ -18,8 +19,24 @@ const algodConfig = {
   port: import.meta.env.VITE_ALGOD_PORT,
   token: import.meta.env.VITE_ALGOD_TOKEN,
 }
+let wallets: SupportedWallet[]
+if (network === 'localnet') {
+  const kmdConfig = getKmdConfigFromViteEnvironment()
+  wallets = [
+    {
+      id: WalletId.KMD,
+      options: {
+        baseServer: kmdConfig.server,
+        token: String(kmdConfig.token),
+        port: String(kmdConfig.port),
+      },
+    },
+  ]
+} else {
+  wallets = [{ id: WalletId.PERA }, { id: WalletId.LUTE }]
+}
 const walletManager = new WalletManager({
-  wallets: [WalletId.PERA, WalletId.LUTE],
+  wallets,
   defaultNetwork: network,
   networks: {
     [network]: {

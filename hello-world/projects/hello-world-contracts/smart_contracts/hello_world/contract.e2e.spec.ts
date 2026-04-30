@@ -1,7 +1,7 @@
 import { Config } from '@algorandfoundation/algokit-utils'
+import { ReadableAddress } from '@algorandfoundation/algokit-utils/common'
 import { registerDebugEventHandlers } from '@algorandfoundation/algokit-utils-debug'
 import { algorandFixture } from '@algorandfoundation/algokit-utils/testing'
-import { Address } from 'algosdk'
 import { beforeAll, beforeEach, describe, expect, test } from 'vitest'
 import { HelloWorldFactory } from '../artifacts/hello_world/HelloWorldClient'
 
@@ -16,7 +16,7 @@ describe('HelloWorld contract', () => {
   })
   beforeEach(localnet.newScope)
 
-  const deploy = async (account: Address) => {
+  const deploy = async (account: ReadableAddress) => {
     const factory = localnet.algorand.client.getTypedAppFactory(HelloWorldFactory, {
       defaultSender: account,
     })

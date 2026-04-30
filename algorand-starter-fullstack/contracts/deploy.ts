@@ -1,18 +1,7 @@
 import { AlgorandClient } from '@algorandfoundation/algokit-utils'
 import { HelloWorldFactory } from './artifacts/HelloWorldClient.js'
 
-const algorand = AlgorandClient.fromConfig({
-  algodConfig: {
-    server: process.env.ALGOD_SERVER ?? 'http://localhost',
-    port: process.env.ALGOD_PORT ?? '4001',
-    token: process.env.ALGOD_TOKEN ?? '',
-  },
-  indexerConfig: {
-    server: process.env.INDEXER_SERVER ?? 'http://localhost',
-    port: process.env.INDEXER_PORT ?? '8980',
-    token: process.env.INDEXER_TOKEN ?? '',
-  },
-})
+const algorand = AlgorandClient.fromEnvironment()
 
 // On localnet, use the default dispenser account.
 // On testnet/mainnet, set DEPLOYER_MNEMONIC in your .env file.
