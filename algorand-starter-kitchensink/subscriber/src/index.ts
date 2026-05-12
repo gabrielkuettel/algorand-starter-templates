@@ -1,5 +1,6 @@
 import { AlgorandSubscriber } from '@algorandfoundation/algokit-subscriber'
 import { AlgorandClient } from '@algorandfoundation/algokit-utils'
+import { TransactionType } from '@algorandfoundation/algokit-utils/transact'
 import { handleLifecycleEvent } from './handlers.js'
 import { getWatermark, setWatermark } from './watermark.js'
 
@@ -23,7 +24,7 @@ const subscriber = new AlgorandSubscriber(
       {
         name: 'app-lifecycle',
         filter: {
-          type: 'appl',
+          type: TransactionType.AppCall,
           appId: appId,
         },
       },

@@ -2,8 +2,9 @@ import { useWallet } from '@txnlab/use-wallet-react'
 import { useSnackbar } from 'notistack'
 import { useState } from 'react'
 import { HelloWorldFactory } from '../contracts/HelloWorld'
-import { OnSchemaBreak, OnUpdate } from '@algorandfoundation/algokit-utils/types/app'
+import { OnSchemaBreak, OnUpdate } from '@algorandfoundation/algokit-utils/app'
 import { getAlgodConfigFromViteEnvironment, getIndexerConfigFromViteEnvironment } from '../utils/network/getAlgoClientConfigs'
+import { getWalletSigner } from '../utils/network/walletSigner'
 import { AlgorandClient } from '@algorandfoundation/algokit-utils'
 
 interface AppCallsInterface {
@@ -15,7 +16,7 @@ const AppCalls = ({ openModal, setModalState }: AppCallsInterface) => {
   const [loading, setLoading] = useState<boolean>(false)
   const [contractInput, setContractInput] = useState<string>('')
   const { enqueueSnackbar } = useSnackbar()
-  const { transactionSigner, activeAddress } = useWallet()
+  const { signTransactions, activeAddress } = useWallet()
 
   const algodConfig = getAlgodConfigFromViteEnvironment()
   const indexerConfig = getIndexerConfigFromViteEnvironment()
@@ -23,7 +24,7 @@ const AppCalls = ({ openModal, setModalState }: AppCallsInterface) => {
     algodConfig,
     indexerConfig,
   })
-  algorand.setDefaultSigner(transactionSigner)
+  algorand.setDefaultSigner(getWalletSigner(signTransactions))
 
   const sendAppCall = async () => {
     setLoading(true)

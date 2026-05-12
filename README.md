@@ -22,6 +22,12 @@ These templates produce the same result (contracts, frontend, tests, deploy) wit
 
 The original `algokit init` output is in `hello-world/` (typescript) and `hello-world-python/` for reference.
 
+## Prerequisites
+
+- [Node.js](https://nodejs.org/) >= 24.0 (required by `@algorandfoundation/algokit-utils@10` and `@algorandfoundation/algokit-client-generator@7`)
+- [AlgoKit CLI](https://github.com/algorandfoundation/algokit-cli) (`pipx install algokit`)
+- [Docker](https://www.docker.com/) (for running LocalNet)
+
 ## Quick Start
 
 ```bash

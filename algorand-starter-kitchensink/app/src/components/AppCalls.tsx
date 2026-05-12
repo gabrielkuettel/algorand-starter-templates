@@ -1,14 +1,14 @@
 import { useWallet } from '@txnlab/use-wallet-react'
 import { useRef, useState } from 'react'
-import { Address } from 'algosdk'
+import { Address } from '@algorandfoundation/algokit-utils'
 import { HelloWorldFactory, type HelloWorldClient } from '@repo/contracts'
-import { getAlgorandClient } from '../utils/algorand'
+import { getAlgorandClient, getWalletSigner } from '../utils/algorand'
 
 export default function AppCalls() {
   const [input, setInput] = useState('')
   const [result, setResult] = useState<string | null>(null)
   const [loading, setLoading] = useState(false)
-  const { transactionSigner, activeAddress } = useWallet()
+  const { signTransactions, activeAddress } = useWallet()
   const appClientRef = useRef<HelloWorldClient | null>(null)
 
   if (!activeAddress) {
@@ -28,7 +28,7 @@ export default function AppCalls() {
     if (appClientRef.current) return appClientRef.current
 
     const algorand = getAlgorandClient()
-    algorand.setDefaultSigner(transactionSigner)
+    algorand.setDefaultSigner(getWalletSigner(signTransactions))
 
     const factory = algorand.client.getTypedAppFactory(HelloWorldFactory, {
       defaultSender: activeAddress,

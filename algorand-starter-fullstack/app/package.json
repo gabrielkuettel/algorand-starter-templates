@@ -3,7 +3,7 @@
   "private": true,
   "type": "module",
   "engines": {
-    "node": ">=20.0"
+    "node": ">=24.0"
   },
   "scripts": {
     "dev": "vite",
@@ -13,10 +13,9 @@
   },
   "dependencies": {
     "@repo/contracts": "*",
-    "@algorandfoundation/algokit-utils": "^9.0.0",
+    "@algorandfoundation/algokit-utils": "10.0.0-beta.2",
     "@txnlab/use-wallet-react": "^4.0.1",
     "@txnlab/use-wallet-ui-react": "^1.0.0",
-    "algosdk": "^3.0.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0"
   },

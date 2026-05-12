@@ -4,7 +4,7 @@ A minimal template for writing, compiling, testing, and deploying Algorand smart
 
 ## Prerequisites
 
-- [Node.js](https://nodejs.org/) >= 22.0
+- [Node.js](https://nodejs.org/) >= 24.0
 - [AlgoKit CLI](https://github.com/algorandfoundation/algokit-cli) (`pipx install algokit`)
 - [Docker](https://www.docker.com/) (for running LocalNet)
 
